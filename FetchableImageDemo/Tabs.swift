@@ -22,6 +22,12 @@ struct Tabs: View {
                     Image(systemName: "list.dash")
                     Text("Contact List")
             }
+            
+            ContactListView(fetchAsyncImages: true)
+                .tabItem {
+                    Image(systemName: "list.dash")
+                    Text("Contact List Async")
+            }
         }
     }
 }

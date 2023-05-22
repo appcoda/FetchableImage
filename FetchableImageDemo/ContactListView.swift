@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContactListView: View {
     @EnvironmentObject var contactList: ContactListModel
+    var fetchAsyncImages: Bool = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -38,7 +39,13 @@ struct ContactListView: View {
                 .navigationBarItems(
                     leading:
                     Button(action: {
-                        self.contactList.fetchAvatars()
+                        if self.fetchAsyncImages {
+                            Task {
+                                await self.contactList.fetchMultipleAvatars()
+                            }
+                        } else {
+                            self.contactList.fetchAvatars()
+                        }
                     }) {
                         Image(systemName: "arrow.clockwise")
                     },

@@ -19,6 +19,8 @@ protocol FetchableImage {
     func deleteBatchImages(using imageURLs: [String?], options: FetchableImageOptions?)
     func deleteBatchImages(using multipleOptions: [FetchableImageOptions])
     func save(image data: Data, options: FetchableImageOptions) -> Bool
+    func fetchImageAsync(from urlString: String?, options: FetchableImageOptions?) async throws -> (Data?)
+
 }
 
 
@@ -153,6 +155,17 @@ extension FetchableImage {
             return false
         }
     }
+    
+    func fetchImageAsync(from urlString: String?, options: FetchableImageOptions?) async throws -> (Data?) {
+        return try await withCheckedThrowingContinuation { continuation in
+            fetchImage(from: urlString, options: options) { imageData in
+                continuation.resume(returning: imageData)
+            }
+        }
+    }
+    
+    
+    
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68D7ED952A1B674D00570A8D /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7ED942A1B674D00570A8D /* Avatar.swift */; };
 		C059396B247E66D600F18977 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059396A247E66D600F18977 /* AppDelegate.swift */; };
 		C059396D247E66D600F18977 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059396C247E66D600F18977 /* SceneDelegate.swift */; };
 		C0593971247E66DA00F18977 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0593970247E66DA00F18977 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68D7ED942A1B674D00570A8D /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		C0593967247E66D600F18977 /* FetchableImageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FetchableImageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C059396A247E66D600F18977 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C059396C247E66D600F18977 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		C059397E247E66E200F18977 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				68D7ED942A1B674D00570A8D /* Avatar.swift */,
 				C0593980247E670900F18977 /* Contact.swift */,
 				C059397F247E670900F18977 /* RandomContactModel.swift */,
 				C0593981247E670900F18977 /* ContactListModel.swift */,
@@ -213,6 +216,7 @@
 				C0593993247E67DA00F18977 /* ContactDetailsView.swift in Sources */,
 				C0593984247E670900F18977 /* ContactListModel.swift in Sources */,
 				C0593983247E670900F18977 /* Contact.swift in Sources */,
+				68D7ED952A1B674D00570A8D /* Avatar.swift in Sources */,
 				C0593991247E67DA00F18977 /* ContactListView.swift in Sources */,
 				C0593990247E67DA00F18977 /* Tabs.swift in Sources */,
 				C059398F247E67DA00F18977 /* ProgressView.swift in Sources */,

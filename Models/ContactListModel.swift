@@ -89,4 +89,43 @@ class ContactListModel: ObservableObject, FetchableImage {
             contacts[index].avatar = nil
         }
     }
+    
+    @MainActor func fetchMultipleAvatars() async {
+        guard !isFetching else { return }
+        isFetching = true
+        progress = 0.0
+        let avatars = contacts.map { contact in
+            return Avatar(imageID: contact.id, imageURL: contact.avatarURL)
+        }
+        
+        do {
+            try await withThrowingTaskGroup(of: (Int?, Data?).self, body: { group in
+                
+                for avatar in avatars {
+                    group.addTask { [self] in
+                        return (avatar.imageID, try await self.fetchImageAsync(from: avatar.imageURL, options: nil))
+                    }
+                }
+                var serializeIndex = 0
+                for try await (imageIndex, imageData) in group {
+                    DispatchQueue.main.async {
+                        if let imgIndex = imageIndex {
+                            self.contacts[imgIndex - 1].avatar = UIImage(data: imageData!)?.cgImage
+                            self.progress = Double(((serializeIndex + 1) * 100) / self.contacts.count)
+                            serializeIndex += 1
+                            if imgIndex == self.contacts.count {
+                                print("Finished fetching avatars!")
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+                                    self.isFetching = false
+                                })
+                            }
+                            
+                        }
+                    }
+                }
+            })
+        } catch {
+            print(error)
+        }
+    }
 }
