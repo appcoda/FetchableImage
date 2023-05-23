@@ -28,6 +28,7 @@ struct ProgressView: View {
                         .foregroundColor(.blue)
                         .background(Color.clear)
                         .padding(.bottom, 8.0)
+                        .animation(.easeInOut, value: self.progress)
                         
                 }
             }
